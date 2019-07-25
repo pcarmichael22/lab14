@@ -46,8 +46,9 @@ function handleSubmit(event) {
 
 // TODO: Add the selected item and quantity to the cart
 function addSelectedItemToCart(myProduct, myQuantity) {
-    var myItems = `name: ${myProduct}, quantity: ${myQuantity}`;
-    cart.items.push(myItems);
+    // var myItems = [myProduct, myQuantity];
+    cart.items.push(myProduct);
+    cart.items.push(myQuantity)
     var selectedItem = JSON.stringify(cart);
     localStorage.setItem('product', selectedItem);
 
@@ -72,7 +73,7 @@ function updateCartPreview() {
 
     // for (var i = 0; i < cart.items.length; i++) {
     var liEl = document.createElement('li');
-    liEl.textContent = parsedProduct;
+    liEl.textContent = allProducts.items;
     ulEl.appendChild(liEl);
     // console.log(i);
     // }
