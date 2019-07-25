@@ -1,6 +1,8 @@
 /* global Product, Cart */
 
 var allProducts = [];
+var selectElement = document.getElementById('items');
+var myShoppingCart = [];
 
 'use strict';
 
@@ -12,7 +14,6 @@ var cart = new Cart([]);
 function populateForm() {
 
     //TODO: Add an <option> tag inside the form's select for each product
-    var selectElement = document.getElementById('items');
     for (var i in Product.allProducts) {
         var currentProduct = document.createElement("option");
         currentProduct.textContent = Product.allProducts[i].name;
@@ -25,11 +26,18 @@ function populateForm() {
 // object, save the whole thing back to local storage and update the screen
 // so that it shows the # of items in the cart and a quick preview of the cart itself.
 function handleSubmit(event) {
+    event.preventDefault(); //UPDATED BY JON
+    var myProduct = event.target.items.value; //Grabs the current selected product name
+    var myQuantity = event.target.quantity.value;
+
+
+
+    // Do all the things ...
+    addSelectedItemToCart(myProduct, myQuantity)
 
     // TODO: Prevent the page from reloading
 
     // Do all the things ...
-    addSelectedItemToCart();
     cart.saveToLocalStorage();
     updateCounter();
     updateCartPreview();
@@ -37,10 +45,12 @@ function handleSubmit(event) {
 }
 
 // TODO: Add the selected item and quantity to the cart
-function addSelectedItemToCart() {
-    // TODO: suss out the item picked from the select list
+function addSelectedItemToCart(myProduct, myQuantity) {
+    var myItems = `name: ${myProduct}, quantity: ${myQuantity}`;
+    cart.items.push(myItems);
+    var selectedItem = JSON.stringify(cart);
+    localStorage.setItem('product', selectedItem);
 
-    // TODO: get the quantity
     // TODO: using those, add one item to the Cart
 }
 
@@ -49,8 +59,24 @@ function updateCounter() {}
 
 // TODO: As you add items into the cart, show them (item & quantity) in the cart preview div
 function updateCartPreview() {
+
     // TODO: Get the item and quantity from the form
-    // TODO: Add a new element to the cartContents div with that information
+    var getProduct = localStorage.getItem('product');
+    var parsedProduct = JSON.parse(getProduct);
+    console.log(parsedProduct)
+        // TODO: Add a new element to the cartContents div with that information
+    var ulEl = document.createElement('ul');
+    var cartDivEl = document.getElementById('cartContents');
+    cartDivEl.appendChild(ulEl);
+    console.log('made it');
+
+    // for (var i = 0; i < cart.items.length; i++) {
+    var liEl = document.createElement('li');
+    liEl.textContent = parsedProduct;
+    ulEl.appendChild(liEl);
+    // console.log(i);
+    // }
+    console.log('past the for loop');
 }
 
 // Set up the "submit" event listener on the form.
