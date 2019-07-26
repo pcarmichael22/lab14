@@ -1,1 +1,80 @@
 /* TODO: Make it awesome */
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Courgette&display=swap');
+body {
+    width: 980px;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'Montserrat', sans-serif;
+}
+
+header h1 {
+    font-size: 50px;
+    font-family: 'Courgette', cursive;
+    padding-bottom: 20px;
+    padding-top: 30px;
+}
+
+section h1 {
+    font-size: 40px;
+    font-family: 'Courgette', cursive;
+    padding-top: 20px;
+}
+
+header {
+    width: 940px;
+    padding: 20px;
+    text-align: center;
+}
+
+li a {
+    margin: 25px;
+    text-align: center;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+li {
+    display: inline-block;
+    text-align: center;
+}
+
+ol li {
+    margin: 10px;
+    text-align: center;
+}
+
+header,
+main,
+footer {
+    background-color: rgb(196, 238, 238);
+}
+
+footer {
+    height: 500px;
+    padding: 50px;
+    text-align: center;
+}
+
+.card {
+    text-align: center;
+}
+
+fieldset {
+    padding-top: 20px;
+}
+
+legend {
+    font-size: 20px;
+    padding-top: 20px;
+}
+
+#cart {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+th {
+    padding: 30px;
+}

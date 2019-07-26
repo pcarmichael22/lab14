@@ -46,11 +46,7 @@ function handleSubmit(event) {
 
 // TODO: Add the selected item and quantity to the cart
 function addSelectedItemToCart(myProduct, myQuantity) {
-    // var myItems = [myProduct, myQuantity];
-    cart.items.push(myProduct);
-    cart.items.push(myQuantity)
-    var selectedItem = JSON.stringify(cart);
-    localStorage.setItem('product', selectedItem);
+    cart.addItem(myProduct, myQuantity);
 
     // TODO: using those, add one item to the Cart
 }
@@ -61,25 +57,25 @@ function updateCounter() {}
 // TODO: As you add items into the cart, show them (item & quantity) in the cart preview div
 function updateCartPreview() {
 
-    // TODO: Get the item and quantity from the form
-    var getProduct = localStorage.getItem('product');
-    var parsedProduct = JSON.parse(getProduct);
-    console.log(parsedProduct)
-        // TODO: Add a new element to the cartContents div with that information
-    var ulEl = document.createElement('ul');
-    var cartDivEl = document.getElementById('cartContents');
-    cartDivEl.appendChild(ulEl);
-    console.log('made it');
+    //     // TODO: Get the item and quantity from the form
+    //     var getProduct = localStorage.getItem('product');
+    //     var parsedProduct = JSON.parse(getProduct);
+    //     console.log('this is the parsed', parsedProduct)
+    //         // TODO: Add a new element to the cartContents div with that information
+    //     var ulEl = document.createElement('ul');
+    //     var cartDivEl = document.getElementById('cartContents');
+    //     cartDivEl.appendChild(ulEl);
+    //     console.log('made it');
 
-    // for (var i = 0; i < cart.items.length; i++) {
-    var liEl = document.createElement('li');
-    liEl.textContent = allProducts.items;
-    ulEl.appendChild(liEl);
-    // console.log(i);
-    // }
-    console.log('past the for loop');
+    //     for (var i = 0; i < cart.items.length; i++) {
+    //         var liEl = document.createElement('li');
+    //         for (var j = 0; j < parsedProduct.length; j++) {
+    //             liEl.textContent = parsedProduct[i][j];
+    //             ulEl.appendChild(liEl);
+    //         }
+    //         console.log('past the for loop');
+    //     }
 }
-
 // Set up the "submit" event listener on the form.
 // This is the trigger for the app. When a user "submits" the form, it will
 // Call that handleSubmit method above and kick off the whole process
